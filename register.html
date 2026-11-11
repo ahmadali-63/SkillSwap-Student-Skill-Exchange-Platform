@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration – SkillSwap</title>
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Custom Project Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       Navigation Bar
+       ======================================================================== -->
+  <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+    <div class="container">
+      <a class="navbar-brand navbar-brand-logo" href="index.html">
+        <span class="brand-icon-wrapper">
+          <i class="bi bi-mortarboard-fill"></i>
+        </span>
+        <span>Skill<span class="text-primary">Swap</span></span>
+      </a>
+
+      <div class="ms-auto d-flex align-items-center gap-2">
+        <span class="small text-muted d-none d-sm-inline">Already registered?</span>
+        <a href="login.html" class="btn btn-sm btn-outline-custom">Log In</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================================================
+       Auth Content
+       ======================================================================== -->
+  <div class="auth-wrapper py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-9 col-lg-7">
+          
+          <div class="auth-card">
+            <div class="text-center mb-4">
+              <span class="brand-icon-wrapper mx-auto mb-3" style="width: 50px; height: 50px; font-size: 1.4rem;">
+                <i class="bi bi-person-plus-fill"></i>
+              </span>
+              <h3 class="fw-bold text-dark mb-1">Create Student Profile</h3>
+              <p class="text-muted small">Join your campus peer network and start trading skills today</p>
+            </div>
+
+            <!-- Demo Fill Pill -->
+            <div class="demo-account-pill mb-4 d-flex align-items-center justify-content-between">
+              <div>
+                <strong class="text-dark d-block"><i class="bi bi-magic text-warning me-1"></i> Quick Test Fill</strong>
+                <span class="text-muted" style="font-size: 0.78rem;">Populate form with valid student data automatically</span>
+              </div>
+              <button type="button" id="btnDemoRegister" class="btn btn-sm btn-warning text-dark fw-bold">
+                Auto Fill
+              </button>
+            </div>
+
+            <!-- Register Form -->
+            <form id="registerForm">
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label for="regFullName" class="form-label-custom">Full Name <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control form-control-custom" id="regFullName" placeholder="e.g. Alex Chen" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="regEmail" class="form-label-custom">University Email <span class="text-danger">*</span></label>
+                  <input type="email" class="form-control form-control-custom" id="regEmail" placeholder="student@university.edu" required>
+                </div>
+              </div>
+
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label for="regCollege" class="form-label-custom">College / University Name <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control form-control-custom" id="regCollege" placeholder="State Institute of Technology" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="regMajor" class="form-label-custom">Department & Semester <span class="text-danger">*</span></label>
+                  <select id="regMajor" class="form-select form-select-custom" required>
+                    <option value="" disabled selected>Select current semester...</option>
+                    <option value="Computer Science • 5th Sem">Computer Science (5th Semester)</option>
+                    <option value="Information Tech • 5th Sem">Information Technology (5th Semester)</option>
+                    <option value="Electrical Eng • 5th Sem">Electrical Engineering (5th Semester)</option>
+                    <option value="Mechanical Eng • 5th Sem">Mechanical Engineering (5th Semester)</option>
+                    <option value="Design & Media • 4th Sem">Design & Media (4th Semester)</option>
+                    <option value="Mathematics • 6th Sem">Mathematics (6th Semester)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                  <label for="regTeach" class="form-label-custom">
+                    <i class="bi bi-mortarboard-fill text-primary me-1"></i> First Skill You Can Teach <span class="text-danger">*</span>
+                  </label>
+                  <input type="text" class="form-control form-control-custom" id="regTeach" placeholder="e.g. HTML/CSS, Python, Calculus" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="regLearn" class="form-label-custom">
+                    <i class="bi bi-lightbulb-fill text-warning me-1"></i> First Skill You Want to Learn <span class="text-danger">*</span>
+                  </label>
+                  <input type="text" class="form-control form-control-custom" id="regLearn" placeholder="e.g. Figma UI, React, Spanish" required>
+                </div>
+              </div>
+
+              <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                  <label for="regPassword" class="form-label-custom">Password <span class="text-danger">*</span></label>
+                  <input type="password" class="form-control form-control-custom" id="regPassword" placeholder="Minimum 6 characters" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="regConfirmPassword" class="form-label-custom">Confirm Password <span class="text-danger">*</span></label>
+                  <input type="password" class="form-control form-control-custom" id="regConfirmPassword" placeholder="Re-enter password" required>
+                </div>
+              </div>
+
+              <div class="form-check mb-4">
+                <input class="form-check-input" type="checkbox" id="termsCheck" required checked>
+                <label class="form-check-label small text-muted" for="termsCheck">
+                  I commit to the <strong>SkillSwap Student Honor Code</strong> to participate respectfully and exchange knowledge equitably.
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary-custom w-100 py-2 mb-3">
+                <i class="bi bi-person-check-fill"></i> Complete Registration & Enter Platform
+              </button>
+
+              <div class="text-center">
+                <span class="text-muted small">Already have an account? </span>
+                <a href="login.html" class="small fw-bold">Sign in here</a>
+              </div>
+            </form>
+
+          </div>
+
+          <div class="text-center mt-3">
+            <a href="index.html" class="text-muted small">
+              <i class="bi bi-arrow-left"></i> Return to Home
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Main Project JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>
+
