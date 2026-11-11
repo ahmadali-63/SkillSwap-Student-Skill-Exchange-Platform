@@ -1,0 +1,101 @@
+/* ==========================================================================
+   SkillSwap – Responsive Stylesheet
+   Responsive tweaks & media queries for mobile/tablet screens
+   ========================================================================== */
+
+/* Extra small devices (phones, 600px and down) */
+@media (max-width: 576px) {
+  .hero-section {
+    padding: 3.5rem 0 3rem;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    margin: 0 auto 1.75rem;
+  }
+
+  .hero-pill-badge {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-search-card {
+    padding: 1.25rem 1rem;
+  }
+
+  .search-input-group .form-control {
+    font-size: 0.88rem;
+    height: 46px;
+  }
+
+  .profile-cover-photo {
+    height: 130px;
+  }
+
+  .profile-avatar-large {
+    width: 85px;
+    height: 85px;
+    bottom: -35px;
+    left: 1.25rem;
+  }
+
+  .profile-info-body {
+    padding: 2.75rem 1.25rem 1.5rem;
+  }
+
+  .auth-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .step-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .footer-custom {
+    padding: 3rem 0 1.5rem;
+    text-align: center;
+  }
+
+  .footer-link:hover {
+    transform: none;
+  }
+}
+
+/* Medium devices (tablets, 768px and down) */
+@media (max-width: 768px) {
+  .navbar-nav {
+    padding-top: 1rem;
+  }
+
+  .nav-link-custom {
+    padding: 0.65rem 0.75rem !important;
+  }
+
+  .hero-card-float {
+    margin-top: 1.5rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .category-card {
+    padding: 1.2rem;
+  }
+
+  .dashboard-stat-card {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 0.8rem;
+    padding-left: 0.8rem;
+  }
+}
+

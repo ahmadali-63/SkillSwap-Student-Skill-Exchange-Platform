@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard – SkillSwap</title>
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Custom Project Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       Navigation Bar
+       ======================================================================== -->
+  <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+    <div class="container">
+      <a class="navbar-brand navbar-brand-logo" href="index.html">
+        <span class="brand-icon-wrapper">
+          <i class="bi bi-mortarboard-fill"></i>
+        </span>
+        <span>Skill<span class="text-primary">Swap</span></span>
+      </a>
+
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <i class="bi bi-list fs-2 text-dark"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="index.html">
+              <i class="bi bi-house-door me-1"></i> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="explore.html">
+              <i class="bi bi-compass me-1"></i> Explore Skills
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom" href="swap-request.html">
+              <i class="bi bi-arrow-left-right me-1"></i> Swap Proposal
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-custom active" href="dashboard.html">
+              <i class="bi bi-grid-1x2 me-1"></i> Dashboard
+            </a>
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-3">
+          <a href="profile.html" class="d-flex align-items-center gap-2 text-decoration-none">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80" alt="Avatar" class="student-avatar-nav" onerror="this.src='https://ui-avatars.com/api/?name=Alex+Chen&background=2563eb&color=fff'">
+            <span class="fw-semibold small text-dark d-none d-sm-inline">Alex Chen</span>
+          </a>
+          <a href="login.html" class="btn btn-sm btn-outline-danger" title="Log Out">
+            <i class="bi bi-box-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================================================
+       Dashboard Header & Summary Bar
+       ======================================================================== -->
+  <header class="py-4 bg-white border-bottom">
+    <div class="container">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+        <div>
+          <div class="d-flex align-items-center gap-2 mb-1">
+            <h1 class="h3 fw-bold mb-0">Student Dashboard</h1>
+            <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-1 small">
+              Semester 5 Active
+            </span>
+          </div>
+          <p class="text-muted small mb-0">Welcome back, <strong>Alex Chen</strong>. Track your incoming swap proposals and scheduled learning sessions.</p>
+        </div>
+
+        <div class="d-flex gap-2">
+          <button class="btn btn-primary-custom" data-bs-toggle="modal" data-bs-target="#addSkillModal">
+            <i class="bi bi-plus-circle-fill"></i> List New Skill
+          </button>
+          <a href="swap-request.html" class="btn btn-outline-custom">
+            <i class="bi bi-send"></i> New Proposal
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Grid -->
+      <div class="row g-3">
+        <!-- Metric 1 -->
+        <div class="col-6 col-lg-3">
+          <div class="dashboard-stat-card d-flex align-items-center gap-3">
+            <div class="stat-icon-wrapper bg-primary-subtle text-primary">
+              <i class="bi bi-arrow-left-right"></i>
+            </div>
+            <div>
+              <span class="text-muted small d-block">Active Swaps</span>
+              <h4 class="fw-bold mb-0">3</h4>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric 2 -->
+        <div class="col-6 col-lg-3">
+          <div class="dashboard-stat-card d-flex align-items-center gap-3">
+            <div class="stat-icon-wrapper bg-warning-subtle text-warning">
+              <i class="bi bi-inbox-fill"></i>
+            </div>
+            <div>
+              <span class="text-muted small d-block">Pending Requests</span>
+              <h4 class="fw-bold mb-0" id="incomingCountBadge">2 New</h4>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric 3 -->
+        <div class="col-6 col-lg-3">
+          <div class="dashboard-stat-card d-flex align-items-center gap-3">
+            <div class="stat-icon-wrapper bg-success-subtle text-success">
+              <i class="bi bi-clock-history"></i>
+            </div>
+            <div>
+              <span class="text-muted small d-block">Hours Exchanged</span>
+              <h4 class="fw-bold mb-0">34 hrs</h4>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric 4 -->
+        <div class="col-6 col-lg-3">
+          <div class="dashboard-stat-card d-flex align-items-center gap-3">
+            <div class="stat-icon-wrapper bg-info-subtle text-info">
+              <i class="bi bi-star-fill text-warning"></i>
+            </div>
+            <div>
+              <span class="text-muted small d-block">Community Rating</span>
+              <h4 class="fw-bold mb-0">4.90 / 5.0</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       Dashboard Tabs & Main Content
+       ======================================================================== -->
+  <main class="py-5">
+    <div class="container">
+      
+      <!-- Nav Tabs -->
+      <ul class="nav nav-pills dashboard-nav-pill gap-2 mb-4" id="dashboardTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="incoming-tab" data-bs-toggle="pill" data-bs-target="#incoming-tab-pane" type="button" role="tab" aria-selected="true">
+            <i class="bi bi-envelope-open me-1"></i> Incoming Requests <span class="badge bg-danger ms-1">2</span>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="outgoing-tab" data-bs-toggle="pill" data-bs-target="#outgoing-tab-pane" type="button" role="tab" aria-selected="false">
+            <i class="bi bi-send me-1"></i> Outgoing Proposals
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="sessions-tab" data-bs-toggle="pill" data-bs-target="#sessions-tab-pane" type="button" role="tab" aria-selected="false">
+            <i class="bi bi-calendar-check me-1"></i> Scheduled Sessions <span class="badge bg-primary ms-1">2</span>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="skills-tab" data-bs-toggle="pill" data-bs-target="#skills-tab-pane" type="button" role="tab" aria-selected="false">
+            <i class="bi bi-award me-1"></i> My Listed Skills
+          </button>
+        </li>
+      </ul>
+
+      <!-- Tab Content Area -->
+      <div class="tab-content" id="dashboardTabContent">
+        
+        <!-- ==================== Tab 1: Incoming Requests ==================== -->
+        <div class="tab-pane fade show active" id="incoming-tab-pane" role="tabpanel" tabindex="0">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold mb-0">Swap Requests Awaiting Your Response</h5>
+            <span class="text-muted small">You have 48 hours to accept or decline</span>
+          </div>
+
+          <!-- Incoming Request 1 -->
+          <div class="request-card">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+              <div class="d-flex align-items-start gap-3">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=120&auto=format&fit=crop&q=80" alt="Student" class="student-avatar" onerror="this.src='https://ui-avatars.com/api/?name=Emma+Watson&background=10b981&color=fff'">
+                <div>
+                  <div class="d-flex align-items-center gap-2 mb-1">
+                    <h6 class="mb-0 fw-bold request-student-name">Emma Watson</h6>
+                    <span class="badge bg-info-subtle text-info small">Design Media • 4th Sem</span>
+                    <span class="badge badge-status-pending">Pending Review</span>
+                  </div>
+                  <p class="text-muted small mb-1">
+                    Offers to teach you: <span class="badge-teach">Figma UI Prototyping</span> • 
+                    Wants to learn from you: <span class="badge-learn">Bootstrap 5 Responsive Grid</span>
+                  </p>
+                  <p class="text-dark small mb-1 fst-italic">
+                    "Hey Alex! I saw your web dev skills. Could we do a 1-hour swap this Thursday? I need help making my portfolio responsive, and I can teach you auto-layout and component variants in Figma!"
+                  </p>
+                  <div class="d-flex gap-3 small text-muted">
+                    <span><i class="bi bi-geo-alt"></i> Online (Google Meet)</span>
+                    <span><i class="bi bi-clock"></i> Thu, 6:00 PM (1 Hour)</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex flex-row flex-md-column gap-2 text-end">
+                <button class="btn btn-sm btn-success-custom btn-accept-request">
+                  <i class="bi bi-check-lg"></i> Accept Swap
+                </button>
+                <button class="btn btn-sm btn-outline-danger btn-decline-request">
+                  <i class="bi bi-x-lg"></i> Decline
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Incoming Request 2 -->
+          <div class="request-card">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+              <div class="d-flex align-items-start gap-3">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&auto=format&fit=crop&q=80" alt="Student" class="student-avatar" onerror="this.src='https://ui-avatars.com/api/?name=Carlos+Rodriguez&background=d97706&color=fff'">
+                <div>
+                  <div class="d-flex align-items-center gap-2 mb-1">
+                    <h6 class="mb-0 fw-bold request-student-name">Carlos Rodriguez</h6>
+                    <span class="badge bg-secondary-subtle text-secondary small">International Studies • 5th Sem</span>
+                    <span class="badge badge-status-pending">Pending Review</span>
+                  </div>
+                  <p class="text-muted small mb-1">
+                    Offers to teach you: <span class="badge-teach">Spanish Conversation (B1)</span> • 
+                    Wants to learn from you: <span class="badge-learn">HTML Semantic Elements</span>
+                  </p>
+                  <p class="text-dark small mb-1 fst-italic">
+                    "Hola! Looking to get started with basic web pages for our department newsletter project. Happy to practice conversational Spanish with you!"
+                  </p>
+                  <div class="d-flex gap-3 small text-muted">
+                    <span><i class="bi bi-geo-alt"></i> Campus Central Library</span>
+                    <span><i class="bi bi-clock"></i> Sat, 11:00 AM (1.5 Hours)</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex flex-row flex-md-column gap-2 text-end">
+                <button class="btn btn-sm btn-success-custom btn-accept-request">
+                  <i class="bi bi-check-lg"></i> Accept Swap
+                </button>
+                <button class="btn btn-sm btn-outline-danger btn-decline-request">
+                  <i class="bi bi-x-lg"></i> Decline
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== Tab 2: Outgoing Proposals ==================== -->
+        <div class="tab-pane fade" id="outgoing-tab-pane" role="tabpanel" tabindex="0">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold mb-0">Proposals You Sent to Peers</h5>
+            <a href="swap-request.html" class="btn btn-sm btn-primary-custom">
+              <i class="bi bi-send-plus"></i> New Proposal
+            </a>
+          </div>
+
+          <!-- Dynamic container for proposals sent by user during demo testing -->
+          <div id="dynamicOutgoingList"></div>
+
+          <!-- Static Outgoing Proposal 1 -->
+          <div class="request-card">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+              <div class="d-flex align-items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&auto=format&fit=crop&q=80" alt="Student" class="student-avatar" onerror="this.src='https://ui-avatars.com/api/?name=David+Kim&background=6366f1&color=fff'">
+                <div>
+                  <div class="d-flex align-items-center gap-2 mb-1">
+                    <h6 class="mb-0 fw-bold">David Kim (Mathematics)</h6>
+                    <span class="badge badge-status-pending">Awaiting Peer Response</span>
+                  </div>
+                  <p class="text-muted small mb-0">
+                    You offered: <span class="text-primary fw-semibold">JavaScript Basics</span> • 
+                    To learn: <span class="text-success fw-semibold">Calculus III & Differential Equations</span>
+                  </p>
+                  <p class="text-muted small fst-italic mb-0 mt-1">"Hey David, saw you want help with JS. Let's swap ahead of next Tuesday's math quiz!"</p>
+                </div>
+              </div>
+
+              <div class="text-md-end">
+                <span class="text-muted small d-block mb-1">Sent yesterday</span>
+                <button class="btn btn-sm btn-outline-secondary" onclick="this.closest('.request-card').remove(); showCustomToast('Cancelled', 'Proposal cancelled.');">
+                  Withdraw Request
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Static Outgoing Proposal 2 -->
+          <div class="request-card">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+              <div class="d-flex align-items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=120&auto=format&fit=crop&q=80" alt="Student" class="student-avatar" onerror="this.src='https://ui-avatars.com/api/?name=Aarav+Patel&background=2563eb&color=fff'">
+                <div>
+                  <div class="d-flex align-items-center gap-2 mb-1">
+                    <h6 class="mb-0 fw-bold">Aarav Patel (Computer Science)</h6>
+                    <span class="badge badge-status-completed">Accepted</span>
+                  </div>
+                  <p class="text-muted small mb-0">
+                    You offered: <span class="text-primary fw-semibold">Bootstrap 5 Components</span> • 
+                    To learn: <span class="text-success fw-semibold">C++ Trees & Graphs</span>
+                  </p>
+                  <p class="text-muted small fst-italic mb-0 mt-1">"Swap scheduled for tomorrow at 5:00 PM."</p>
+                </div>
+              </div>
+
+              <div class="text-md-end">
+                <span class="badge bg-success-subtle text-success border border-success-subtle px-3 py-1">Session Confirmed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== Tab 3: Scheduled Sessions ==================== -->
+        <div class="tab-pane fade" id="sessions-tab-pane" role="tabpanel" tabindex="0">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold mb-0">Upcoming Learning Exchanges</h5>
+            <span class="badge bg-primary-subtle text-primary">2 Confirmed</span>
+          </div>
+
+          <!-- Session 1 -->
+          <div class="request-card border-start border-primary border-4">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+              <div>
+                <div class="d-flex align-items-center gap-2 mb-1">
+                  <span class="badge bg-primary text-white">Tomorrow</span>
+                  <h6 class="mb-0 fw-bold">C++ Graph Algorithms 🔄 Bootstrap 5 Navigation</h6>
+                </div>
+                <p class="text-muted small mb-1">
+                  Exchange Partner: <strong>Aarav Patel</strong> • Duration: <strong>1.5 Hours</strong>
+                </p>
+                <div class="d-flex gap-3 small text-muted">
+                  <span><i class="bi bi-clock-fill text-primary"></i> 5:00 PM – 6:30 PM</span>
+                  <span><i class="bi bi-geo-alt-fill text-danger"></i> Campus Central Library, Study Room 4</span>
+                </div>
+              </div>
+
+              <div class="d-flex gap-2">
+                <button class="btn btn-sm btn-outline-primary" onclick="showCustomToast('Calendar Link', 'Session reminder synced to your device calendar.')">
+                  <i class="bi bi-calendar-plus"></i> Add to Cal
+                </button>
+                <button class="btn btn-sm btn-primary-custom" onclick="showCustomToast('Session Details', 'Location: Study Room 4. Partner contact shared.')">
+                  View Details
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Session 2 -->
+          <div class="request-card border-start border-success border-4">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+              <div>
+                <div class="d-flex align-items-center gap-2 mb-1">
+                  <span class="badge bg-success text-white">Friday, Nov 14</span>
+                  <h6 class="mb-0 fw-bold">Database SQL Normalization 🔄 Git Merge Conflict Lab</h6>
+                </div>
+                <p class="text-muted small mb-1">
+                  Exchange Partner: <strong>Sarah Jenkins</strong> • Duration: <strong>1 Hour</strong>
+                </p>
+                <div class="d-flex gap-3 small text-muted">
+                  <span><i class="bi bi-clock-fill text-success"></i> 4:00 PM – 5:00 PM</span>
+                  <span><i class="bi bi-camera-video-fill text-primary"></i> Google Meet Room</span>
+                </div>
+              </div>
+
+              <div class="d-flex gap-2">
+                <button class="btn btn-sm btn-primary-custom" onclick="showCustomToast('Opening Meeting Room', 'Launching Google Meet session in browser...')">
+                  <i class="bi bi-camera-video"></i> Join Room
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== Tab 4: My Listed Skills ==================== -->
+        <div class="tab-pane fade" id="skills-tab-pane" role="tabpanel" tabindex="0">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="fw-bold mb-0">Your Active Skill Catalog</h5>
+            <button class="btn btn-sm btn-primary-custom" data-bs-toggle="modal" data-bs-target="#addSkillModal">
+              <i class="bi bi-plus-lg"></i> Add New Skill
+            </button>
+          </div>
+
+          <div class="row g-3">
+            <!-- Skill Card 1 -->
+            <div class="col-md-6">
+              <div class="p-3 border rounded-3 bg-white h-100 shadow-sm position-relative">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <div class="d-flex align-items-center gap-2">
+                    <div class="category-icon-box bg-primary-subtle text-primary mb-0" style="width: 40px; height: 40px; font-size: 1.1rem;">
+                      <i class="bi bi-code-slash"></i>
+                    </div>
+                    <div>
+                      <h6 class="fw-bold mb-0">HTML5 & Bootstrap 5</h6>
+                      <span class="badge bg-light text-muted border">Teaching</span>
+                    </div>
+                  </div>
+                  <span class="badge bg-success-subtle text-success">Proficient</span>
+                </div>
+                <p class="small text-muted mb-2">Responsive navbar, grid systems, custom CSS variables, and flexbox design.</p>
+                <div class="d-flex justify-content-between align-items-center pt-2 border-top small text-muted">
+                  <span>14 swaps completed</span>
+                  <button class="btn btn-sm btn-link text-danger p-0" onclick="this.closest('.col-md-6').remove(); showCustomToast('Skill Removed', 'Skill unlisted from public catalog.');">Remove</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Skill Card 2 -->
+            <div class="col-md-6">
+              <div class="p-3 border rounded-3 bg-white h-100 shadow-sm position-relative">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <div class="d-flex align-items-center gap-2">
+                    <div class="category-icon-box bg-warning-subtle text-warning mb-0" style="width: 40px; height: 40px; font-size: 1.1rem;">
+                      <i class="bi bi-braces"></i>
+                    </div>
+                    <div>
+                      <h6 class="fw-bold mb-0">JavaScript Basics & DOM</h6>
+                      <span class="badge bg-light text-muted border">Teaching</span>
+                    </div>
+                  </div>
+                  <span class="badge bg-primary-subtle text-primary">Intermediate</span>
+                </div>
+                <p class="small text-muted mb-2">Events, local storage caching, query selectors, and dynamic UI manipulation.</p>
+                <div class="d-flex justify-content-between align-items-center pt-2 border-top small text-muted">
+                  <span>9 swaps completed</span>
+                  <button class="btn btn-sm btn-link text-danger p-0" onclick="this.closest('.col-md-6').remove(); showCustomToast('Skill Removed', 'Skill unlisted from public catalog.');">Remove</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Skill Card 3 (Seeking) -->
+            <div class="col-md-6">
+              <div class="p-3 border rounded-3 bg-white h-100 shadow-sm position-relative">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <div class="d-flex align-items-center gap-2">
+                    <div class="category-icon-box bg-success-subtle text-success mb-0" style="width: 40px; height: 40px; font-size: 1.1rem;">
+                      <i class="bi bi-cpu"></i>
+                    </div>
+                    <div>
+                      <h6 class="fw-bold mb-0">Machine Learning Basics</h6>
+                      <span class="badge bg-light text-muted border">Seeking</span>
+                    </div>
+                  </div>
+                  <span class="badge bg-warning-subtle text-warning">Learning</span>
+                </div>
+                <p class="small text-muted mb-2">Linear regression, classification models in Python with pandas and scikit-learn.</p>
+                <div class="d-flex justify-content-between align-items-center pt-2 border-top small text-muted">
+                  <span>Looking for peer mentor</span>
+                  <button class="btn btn-sm btn-link text-danger p-0" onclick="this.closest('.col-md-6').remove(); showCustomToast('Skill Removed', 'Skill unlisted.');">Remove</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ========================================================================
+       Add New Skill Modal
+       ======================================================================== -->
+  <div class="modal fade" id="addSkillModal" tabindex="-1" aria-labelledby="addSkillModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="modal-header bg-light py-3 border-bottom">
+          <h5 class="modal-title fw-bold mb-0" id="addSkillModalLabel">
+            <i class="bi bi-award-fill text-primary me-2"></i> List a New Skill
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <form id="addSkillForm">
+          <div class="modal-body p-4">
+            <div class="mb-3">
+              <label class="form-label-custom">Skill Type <span class="text-danger">*</span></label>
+              <div class="d-flex gap-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="skillTypeRadio" id="typeTeach" value="teach" checked>
+                  <label class="form-check-label" for="typeTeach">I can teach this</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="skillTypeRadio" id="typeLearn" value="learn">
+                  <label class="form-check-label" for="typeLearn">I want to learn this</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label-custom">Skill / Subject Name <span class="text-danger">*</span></label>
+              <input type="text" id="newSkillName" class="form-control form-control-custom" placeholder="e.g. React.js, Discrete Mathematics, Figma" required>
+            </div>
+
+            <div class="row g-2 mb-3">
+              <div class="col-6">
+                <label class="form-label-custom">Category</label>
+                <select class="form-select form-select-custom">
+                  <option value="programming">Programming & Tech</option>
+                  <option value="academics">Academics & Math</option>
+                  <option value="design">Design & Creative</option>
+                  <option value="languages">Languages</option>
+                  <option value="multimedia">Media & Video</option>
+                </select>
+              </div>
+              <div class="col-6">
+                <label class="form-label-custom">Your Level</label>
+                <select id="newSkillLevel" class="form-select form-select-custom">
+                  <option value="Beginner">Beginner</option>
+                  <option value="Intermediate" selected>Intermediate</option>
+                  <option value="Advanced">Advanced / Expert</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label-custom">Short Summary / Topics Covered</label>
+              <textarea class="form-control form-control-custom" rows="3" placeholder="Explain what topics you can help with or what concepts you want to learn..."></textarea>
+            </div>
+          </div>
+
+          <div class="modal-footer bg-light border-top p-3">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary-custom">
+              <i class="bi bi-check2-circle"></i> Add to My Profile
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       Footer
+       ======================================================================== -->
+  <footer class="footer-custom">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <span class="brand-icon-wrapper" style="width: 34px; height: 34px;">
+              <i class="bi bi-mortarboard-fill"></i>
+            </span>
+            <span class="footer-brand">Skill<span class="text-primary">Swap</span></span>
+          </div>
+          <p class="small text-muted mb-0">
+            A peer-to-peer student skill exchange platform built with HTML5, CSS3, and Bootstrap 5 as part of the 5th Semester Web Engineering coursework.
+          </p>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <h6 class="text-white fw-bold mb-3">Navigation</h6>
+          <a href="index.html" class="footer-link">Home</a>
+          <a href="explore.html" class="footer-link">Explore Directory</a>
+          <a href="dashboard.html" class="footer-link">Dashboard</a>
+          <a href="swap-request.html" class="footer-link">Propose Swap</a>
+        </div>
+
+        <div class="col-6 col-lg-4">
+          <h6 class="text-white fw-bold mb-3">Course Details</h6>
+          <p class="small text-muted mb-1"><strong>Project:</strong> Student Skill Exchange Platform</p>
+          <p class="small text-muted mb-1"><strong>Technologies:</strong> HTML5, CSS3, Bootstrap 5</p>
+          <p class="small text-muted mb-0"><strong>Status:</strong> 5th Semester Final Project Submission</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+        <p class="text-muted small mb-0">© 2026 SkillSwap Platform. Academic Coursework.</p>
+        <p class="text-muted small mb-0">Designed & Built by Hand with Bootstrap 5</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Main Project JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>
+

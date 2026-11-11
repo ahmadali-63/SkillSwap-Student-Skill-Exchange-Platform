@@ -1,0 +1,658 @@
+/* ==========================================================================
+   SkillSwap – Student Skill Exchange Platform
+   5th Semester Web Development Project
+   Technologies: HTML5, CSS3, Bootstrap 5.3
+   ========================================================================== */
+
+/* ---------- 1. Google Fonts & Global Variables ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap');
+
+:root {
+  /* Brand Color Palette */
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-subtle: #eff6ff;
+  --primary-border: #bfdbfe;
+  
+  --secondary: #6366f1;
+  --secondary-subtle: #eef2ff;
+  
+  --accent-green: #059669;
+  --accent-green-subtle: #ecfdf5;
+  
+  --accent-amber: #d97706;
+  --accent-amber-subtle: #fffbeb;
+  
+  --accent-purple: #7c3aed;
+  --accent-purple-subtle: #f5f3ff;
+  
+  /* Neutral Color Scale */
+  --dark-navy: #0f172a;
+  --slate-800: #1e293b;
+  --slate-600: #475569;
+  --slate-400: #94a3b8;
+  --slate-200: #e2e8f0;
+  --slate-100: #f1f5f9;
+  --slate-50: #f8fafc;
+  --white: #ffffff;
+  
+  /* Typography */
+  --font-base: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Space Grotesk', var(--font-base);
+  
+  /* Transitions & Shadows */
+  --transition-fast: all 0.2s ease-in-out;
+  --transition-normal: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 10px 25px -3px rgba(15, 23, 42, 0.1), 0 4px 6px -4px rgba(15, 23, 42, 0.05);
+  --shadow-hover: 0 20px 30px -10px rgba(37, 99, 235, 0.15), 0 8px 10px -6px rgba(15, 23, 42, 0.05);
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+}
+
+/* ---------- 2. Base & Reset ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-base);
+  color: var(--slate-800);
+  background-color: var(--slate-50);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .brand-font {
+  font-family: var(--font-heading);
+  color: var(--dark-navy);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+a:hover {
+  color: var(--primary-hover);
+}
+
+/* ---------- 3. Custom Navbar ---------- */
+.navbar-custom {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--slate-200);
+  padding: 0.85rem 0;
+  transition: var(--transition-normal);
+  z-index: 1030;
+}
+
+.navbar-brand-logo {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--dark-navy);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand-icon-wrapper {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: var(--white);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+}
+
+.nav-link-custom {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--slate-600) !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+}
+
+.nav-link-custom:hover,
+.nav-link-custom.active {
+  color: var(--primary) !important;
+  background-color: var(--primary-subtle);
+}
+
+.student-avatar-nav {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary-border);
+}
+
+/* ---------- 4. Hero Section ---------- */
+.hero-section {
+  position: relative;
+  background: radial-gradient(circle at 10% 20%, rgba(239, 246, 255, 0.9) 0%, rgba(255, 255, 255, 1) 90%);
+  padding: 5rem 0 4.5rem;
+  border-bottom: 1px solid var(--slate-200);
+  overflow: hidden;
+}
+
+.hero-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--primary-subtle);
+  border: 1px solid var(--primary-border);
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  margin-bottom: 1.25rem;
+}
+
+.hero-title {
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  line-height: 1.12;
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+  color: var(--dark-navy);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  font-size: 1.125rem;
+  color: var(--slate-600);
+  margin-bottom: 2rem;
+  max-width: 580px;
+}
+
+/* Hero Quick Search Box */
+.hero-search-card {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.search-input-group {
+  position: relative;
+}
+
+.search-input-group .bi {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--slate-400);
+  font-size: 1.1rem;
+}
+
+.search-input-group .form-control {
+  padding-left: 2.75rem;
+  height: 50px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--slate-200);
+  font-size: 0.95rem;
+}
+
+.search-input-group .form-control:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-subtle);
+}
+
+/* Floating Student Stat Badge */
+.hero-card-float {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.25rem;
+  box-shadow: var(--shadow-lg);
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  transition: var(--transition-normal);
+}
+
+.hero-card-float:hover {
+  transform: translateY(-5px);
+}
+
+/* ---------- 5. Badges & Skill Pills ---------- */
+.badge-teach {
+  background-color: var(--primary-subtle);
+  color: var(--primary);
+  border: 1px solid var(--primary-border);
+  font-weight: 600;
+  font-size: 0.78rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.badge-learn {
+  background-color: var(--accent-green-subtle);
+  color: var(--accent-green);
+  border: 1px solid #a7f3d0;
+  font-weight: 600;
+  font-size: 0.78rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.badge-semester {
+  background-color: var(--slate-100);
+  color: var(--slate-600);
+  font-weight: 600;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-sm);
+}
+
+.badge-status-active {
+  background-color: #dbeafe;
+  color: #1e40af;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 50px;
+  font-weight: 600;
+}
+
+.badge-status-pending {
+  background-color: var(--accent-amber-subtle);
+  color: var(--accent-amber);
+  border: 1px solid #fde68a;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 50px;
+  font-weight: 600;
+}
+
+.badge-status-completed {
+  background-color: var(--accent-green-subtle);
+  color: var(--accent-green);
+  border: 1px solid #a7f3d0;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 50px;
+  font-weight: 600;
+}
+
+/* ---------- 6. Interactive Skill & Mentor Cards ---------- */
+.skill-card {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  transition: var(--transition-normal);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary-border);
+}
+
+.student-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--white);
+  box-shadow: var(--shadow-sm);
+}
+
+.rating-star {
+  color: #f59e0b;
+  font-size: 0.9rem;
+}
+
+.category-icon-box {
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  transition: var(--transition-fast);
+}
+
+.category-card {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  text-align: center;
+  transition: var(--transition-normal);
+  cursor: pointer;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.category-card:hover .category-icon-box {
+  transform: scale(1.08);
+}
+
+/* ---------- 7. How It Works Steps ---------- */
+.step-card {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-xl);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  position: relative;
+  transition: var(--transition-normal);
+  height: 100%;
+}
+
+.step-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.step-number {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--white);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  font-size: 1.1rem;
+}
+
+/* ---------- 8. Dashboard Specific Styling ---------- */
+.dashboard-stat-card {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  transition: var(--transition-fast);
+}
+
+.dashboard-stat-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.stat-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+}
+
+.dashboard-nav-pill .nav-link {
+  color: var(--slate-600);
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  border: 1px solid transparent;
+  transition: var(--transition-fast);
+}
+
+.dashboard-nav-pill .nav-link.active {
+  background-color: var(--primary);
+  color: var(--white);
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+}
+
+/* Request Row / Card */
+.request-card {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  transition: var(--transition-fast);
+}
+
+.request-card:hover {
+  border-color: var(--primary-border);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---------- 9. Student Profile Specific Styling ---------- */
+.profile-header-card {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.profile-cover-photo {
+  height: 180px;
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+  position: relative;
+}
+
+.profile-avatar-large {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 4px solid var(--white);
+  object-fit: cover;
+  box-shadow: var(--shadow-md);
+  position: absolute;
+  bottom: -45px;
+  left: 2rem;
+}
+
+.profile-info-body {
+  padding: 3.5rem 2rem 2rem;
+}
+
+.skill-progress-bar {
+  height: 8px;
+  border-radius: 50px;
+  background-color: var(--slate-100);
+  overflow: hidden;
+}
+
+.skill-progress-fill {
+  height: 100%;
+  border-radius: 50px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+}
+
+/* ---------- 10. Forms, Modals & Buttons ---------- */
+.form-label-custom {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--slate-800);
+  margin-bottom: 0.4rem;
+}
+
+.form-control-custom,
+.form-select-custom {
+  height: 48px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--slate-200);
+  padding: 0.65rem 1rem;
+  font-size: 0.95rem;
+  transition: var(--transition-fast);
+  background-color: var(--white);
+}
+
+textarea.form-control-custom {
+  height: auto;
+}
+
+.form-control-custom:focus,
+.form-select-custom:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  outline: none;
+}
+
+.btn-primary-custom {
+  background: var(--primary);
+  border: 1px solid var(--primary);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: var(--transition-fast);
+}
+
+.btn-primary-custom:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.btn-outline-custom {
+  background: transparent;
+  border: 1px solid var(--slate-200);
+  color: var(--slate-800);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: var(--transition-fast);
+}
+
+.btn-outline-custom:hover {
+  background: var(--slate-100);
+  color: var(--dark-navy);
+  border-color: var(--slate-400);
+}
+
+.btn-success-custom {
+  background: var(--accent-green);
+  border: 1px solid var(--accent-green);
+  color: var(--white);
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  transition: var(--transition-fast);
+}
+
+.btn-success-custom:hover {
+  background: #047857;
+  color: var(--white);
+}
+
+/* ---------- 11. Auth Pages (Login & Register) ---------- */
+.auth-wrapper {
+  min-height: calc(100vh - 160px);
+  display: flex;
+  align-items: center;
+  padding: 3rem 0;
+}
+
+.auth-card {
+  background: var(--white);
+  border: 1px solid var(--slate-200);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.demo-account-pill {
+  background-color: var(--accent-amber-subtle);
+  border: 1px dashed var(--accent-amber);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+}
+
+/* ---------- 12. Footer ---------- */
+.footer-custom {
+  background-color: var(--dark-navy);
+  color: var(--slate-400);
+  padding: 4rem 0 2rem;
+  border-top: 1px solid var(--slate-800);
+}
+
+.footer-brand {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.footer-link {
+  color: var(--slate-400);
+  display: block;
+  margin-bottom: 0.65rem;
+  font-size: 0.92rem;
+  transition: var(--transition-fast);
+}
+
+.footer-link:hover {
+  color: var(--white);
+  transform: translateX(4px);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  font-size: 0.85rem;
+}
+
+/* Toast styling override */
+.toast-container {
+  z-index: 1090;
+}
+
+.custom-toast {
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  border: none;
+}
+
