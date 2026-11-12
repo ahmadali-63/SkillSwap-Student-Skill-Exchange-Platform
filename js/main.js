@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
    0. Mock Student Database (Used across Explore, Profile, and Proposals)
    ========================================================================== */
 const STUDENT_DATABASE = {
-  "alex chen": {
-    name: "Alex Chen",
+  "ahmad ali": {
+    name: "Ahmad Ali",
     role: "Verified Student",
     badge: "Fast Responder",
     avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=200&auto=format&fit=crop&q=80",
@@ -36,7 +36,7 @@ const STUDENT_DATABASE = {
     hoursTaught: "34h",
     location: "North Campus, Room 302",
     since: "Sept 2024",
-    bio: "Hey there! I'm a 5th semester Computer Science student passionate about frontend engineering and accessible web standards. Currently building responsive web layouts with HTML5, CSS3, and Bootstrap 5.\n\nI love teaching fundamentals of web architecture, flexbox, CSS Grid, and DOM manipulation. In exchange, I'm eager to pair up with peers who can help me with Machine Learning algorithms in Python, UI wireframing in Figma, or Discrete Math midterm review!",
+    bio: "Hey there! I'm a 5th semester Computer Science student passionate about frontend engineering and accessible web standards. Currently building responsive web layouts with HTML5, CSS3, and Bootstrap 5.\n\nI love teaching fundamentals of web architecture, flexbox, CSS Grid, and DOM manipulation. In exchange, I'm eager to pair up with peers who can help me with Machine Learning algorithms in Python, UI wireframing in Figma, or C++ Data Structures!",
     teach: [
       { name: "HTML5 & Bootstrap 5 Responsive Design", level: "Advanced (95%)", percent: 95, desc: "Semantic markup, responsive navigation, grid layout, cards, and accessibility." },
       { name: "JavaScript & DOM Interactivity", level: "Proficient (85%)", percent: 85, desc: "Event handling, modal triggers, dynamic form validation, and local storage state." },
@@ -46,7 +46,7 @@ const STUDENT_DATABASE = {
       { icon: "bi-cpu text-primary", title: "Machine Learning in Python", desc: "Need help understanding linear regression, decision trees, and scikit-learn models for our semester lab." },
       { icon: "bi-palette text-warning", title: "Figma UI Wireframing", desc: "Want to improve design thinking, color theory, and prototyping high-fidelity student dashboards." },
       { icon: "bi-calculator text-success", title: "Discrete Math Proofs", desc: "Looking for a peer to review recurrence relations and graph theory before midterms." },
-      { icon: "bi-translate text-info", title: "Conversational Spanish", desc: "Interested in 30-min weekly language exchange practice for elective credits." }
+      { icon: "bi-code-square text-info", title: "C++ & Data Structures", desc: "Interested in pairing up on recursive trees and graph algorithms." }
     ],
     schedule: [
       { days: "Monday - Wednesday", time: "5:00 PM – 8:00 PM" },
@@ -56,12 +56,12 @@ const STUDENT_DATABASE = {
       { days: "Sunday", time: "By Appointment" }
     ],
     reviews: [
-      { name: "Sarah Jenkins", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80", rating: 5, exchange: "Python for Bootstrap 5 Grid", text: "Alex is an incredible peer mentor! He explained the Bootstrap grid and custom CSS responsive breakpoints in just two sessions. In exchange, I helped him with SQL queries. Super patient and punctual.", date: "Nov 04, 2026" },
-      { name: "David Kim", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80", rating: 5, exchange: "Calculus III for Web Layout", text: "Helped me debug our team's web engineering lab project. Very clear explanations and great communication throughout our swap session.", date: "Oct 28, 2026" }
+      { name: "Neha Ahmed", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80", rating: 5, exchange: "Python for Bootstrap 5 Grid", text: "Ahmad is an incredible peer mentor! He explained the Bootstrap grid and custom CSS responsive breakpoints in just two sessions. In exchange, I helped him with SQL queries. Super patient and punctual.", date: "Nov 04, 2026" },
+      { name: "Bilal Hassan", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80", rating: 5, exchange: "Calculus III for Web Layout", text: "Helped me debug our team's web engineering lab project. Very clear explanations and great communication throughout our swap session.", date: "Oct 28, 2026" }
     ]
   },
-  "aarav patel": {
-    name: "Aarav Patel",
+  "hamza tariq": {
+    name: "Hamza Tariq",
     role: "Verified Student",
     badge: "Top Mentor",
     avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&auto=format&fit=crop&q=80",
@@ -88,11 +88,11 @@ const STUDENT_DATABASE = {
       { days: "Sunday", time: "Available on Discord" }
     ],
     reviews: [
-      { name: "Kenji Tanaka", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80", rating: 5, exchange: "C++ Graphs for Web Portfolio", text: "Aarav walked me through Dijkstra's and Topological Sort with crystal clear diagrams. Best peer tutor on campus!", date: "Nov 02, 2026" }
+      { name: "Usama Malik", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80", rating: 5, exchange: "C++ Graphs for Web Portfolio", text: "Hamza walked me through Dijkstra's and Topological Sort with crystal clear diagrams. Best peer tutor on campus!", date: "Nov 02, 2026" }
     ]
   },
-  "sarah jenkins": {
-    name: "Sarah Jenkins",
+  "neha ahmed": {
+    name: "Neha Ahmed",
     role: "Verified Student",
     badge: "Top Mentor",
     avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80",
@@ -104,7 +104,7 @@ const STUDENT_DATABASE = {
     hoursTaught: "26h",
     location: "Science Block & Zoom",
     since: "Oct 2024",
-    bio: "Hey! I focus on backend databases, SQL query optimization, and Python data pipelines. Currently working on semester projects involving SQLite, MySQL, and pandas. Looking for peers who know frontend frameworks and French language basics!",
+    bio: "Assalam-o-Alaikum! I focus on backend databases, SQL query optimization, and Python data pipelines. Currently working on semester projects involving SQLite, MySQL, and pandas. Looking for peers who know frontend frameworks and UI design systems!",
     teach: [
       { name: "Python Scripting & Data Pipelines", level: "Advanced (90%)", percent: 90, desc: "Data structures, file handling, automation scripts, and API consumption." },
       { name: "SQL & Relational Database Design", level: "Proficient (88%)", percent: 88, desc: "Normalization (1NF to BCNF), complex joins, subqueries, and indexing." }
@@ -118,11 +118,11 @@ const STUDENT_DATABASE = {
       { days: "Saturday - Sunday", time: "11:00 AM – 3:00 PM" }
     ],
     reviews: [
-      { name: "Alex Chen", avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=80", rating: 5, exchange: "SQL Joins for Bootstrap Cards", text: "Sarah made database normalization finally make sense for my midterm exams. 10/10!", date: "Nov 04, 2026" }
+      { name: "Ahmad Ali", avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=80", rating: 5, exchange: "SQL Joins for Bootstrap Cards", text: "Neha made database normalization finally make sense for my midterm exams. 10/10!", date: "Nov 04, 2026" }
     ]
   },
-  "david kim": {
-    name: "David Kim",
+  "bilal hassan": {
+    name: "Bilal Hassan",
     role: "Verified Student",
     badge: "Math Club Head",
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&auto=format&fit=crop&q=80",
@@ -132,7 +132,7 @@ const STUDENT_DATABASE = {
     rating: "5.00",
     swapsCount: 31,
     hoursTaught: "42h",
-    location: "Ramanujan Math Hall",
+    location: "Campus Math Hall",
     since: "Jan 2024",
     bio: "President of the Campus Math Circle. If you need help with multivariable calculus, linear algebra, Laplace transforms, or probability distributions, I've got your back. In exchange, I'm trying to learn Python so I can run Monte Carlo simulations!",
     teach: [
@@ -146,11 +146,11 @@ const STUDENT_DATABASE = {
       { days: "Monday, Wednesday, Friday", time: "4:00 PM – 7:00 PM" }
     ],
     reviews: [
-      { name: "Rhea Sharma", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80", rating: 5, exchange: "Calculus III for Web Portfolio", text: "David is the reason I got an A in Calculus! Super clear explanations.", date: "Oct 28, 2026" }
+      { name: "Aimen Khan", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80", rating: 5, exchange: "Calculus III for Web Portfolio", text: "Bilal is the reason I got an A in Calculus! Super clear explanations.", date: "Oct 28, 2026" }
     ]
   },
-  "emma watson": {
-    name: "Emma Watson",
+  "moatter fatima": {
+    name: "Moatter Fatima",
     role: "Verified Student",
     badge: "Design Lead",
     avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&auto=format&fit=crop&q=80",
@@ -175,15 +175,15 @@ const STUDENT_DATABASE = {
       { days: "Tuesday & Thursday", time: "6:00 PM – 8:00 PM" }
     ],
     reviews: [
-      { name: "Marcus Vance", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80", rating: 5, exchange: "Figma for JavaScript", text: "Emma taught me how to use Figma like a pro. Her tips on spacing and hierarchy elevated my project!", date: "Nov 01, 2026" }
+      { name: "Saad Siddiqui", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80", rating: 5, exchange: "Figma for JavaScript", text: "Moatter taught me how to use Figma like a pro. Her tips on spacing and hierarchy elevated my project!", date: "Nov 01, 2026" }
     ]
   },
-  "carlos rodriguez": {
-    name: "Carlos Rodriguez",
+  "zain ul abidin": {
+    name: "Zain Ul Abidin",
     role: "Verified Student",
-    badge: "Native Speaker",
+    badge: "Language Mentor",
     avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&auto=format&fit=crop&q=80",
-    degree: "International Relations & Humanities",
+    degree: "International Relations & Linguistics",
     semester: "5th Semester",
     roll: "IR-2022-055",
     rating: "4.95",
@@ -191,22 +191,23 @@ const STUDENT_DATABASE = {
     hoursTaught: "32h",
     location: "Humanities Lounge & Library",
     since: "May 2024",
-    bio: "Native Spanish speaker from Valencia, currently studying abroad. I love sharing Hispanic culture and conversational fluency. Seeking a buddy who can teach me web programming fundamentals or Excel automation!",
+    bio: "Passionate about language learning, public speaking, and IELTS exam prep. I enjoy helping students master academic English dialogue and German A1 fundamentals. Seeking a buddy who can teach me web programming basics or Excel data automation!",
     teach: [
-      { name: "Conversational Spanish (A1 to C1)", level: "Native (100%)", percent: 100, desc: "Grammar, listening comprehension, accent training, and everyday dialogue." }
+      { name: "Academic English & IELTS Communication", level: "Advanced (98%)", percent: 98, desc: "Academic writing, listening comprehension, accent clarity, and interview dialogue." },
+      { name: "German A1 Language Basics", level: "Proficient (88%)", percent: 88, desc: "Elementary grammar, vocabulary, pronunciation, and elective test prep." }
     ],
     learn: [
-      { icon: "bi-laptop text-primary", title: "Web Development Basics", desc: "Want to build simple web pages for our campus international society." }
+      { icon: "bi-laptop text-primary", title: "Web Development Basics", desc: "Want to build clean web pages for our campus international society." }
     ],
     schedule: [
       { days: "Weekdays", time: "Flexible Afternoons & Evenings" }
     ],
     reviews: [
-      { name: "Ananya Mishra", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80", rating: 5, exchange: "Spanish for Content Writing", text: "Carlos makes language learning genuinely fun and conversational. Highly recommend!", date: "Oct 19, 2026" }
+      { name: "Mahnoor Raza", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80", rating: 5, exchange: "English for Content Writing", text: "Zain makes language practice genuinely fun and conversational. Highly recommend!", date: "Oct 19, 2026" }
     ]
   },
-  "lucas meyer": {
-    name: "Lucas Meyer",
+  "daniyal khan": {
+    name: "Daniyal Khan",
     role: "Verified Student",
     badge: "Video Creator",
     avatar: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=200&auto=format&fit=crop&q=80",
@@ -229,11 +230,11 @@ const STUDENT_DATABASE = {
       { days: "Saturdays & Sundays", time: "1:00 PM – 5:00 PM" }
     ],
     reviews: [
-      { name: "Priya Nair", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80", rating: 5, exchange: "Video Editing for Logic Gates", text: "Lucas helped me edit my club's symposium video. Excellent instruction!", date: "Oct 12, 2026" }
+      { name: "Aelaf Ashraf", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80", rating: 5, exchange: "Video Editing for Logic Gates", text: "Daniyal helped me edit my club's symposium video. Excellent instruction!", date: "Oct 12, 2026" }
     ]
   },
-  "priya nair": {
-    name: "Priya Nair",
+  "aelaf ashraf": {
+    name: "Aelaf Ashraf",
     role: "Verified Student",
     badge: "Top Scorer",
     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&auto=format&fit=crop&q=80",
@@ -256,10 +257,20 @@ const STUDENT_DATABASE = {
       { days: "Monday & Friday", time: "5:00 PM – 7:00 PM" }
     ],
     reviews: [
-      { name: "Aarav Patel", avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=80", rating: 5, exchange: "Digital Circuits for C++ Pointers", text: "Priya explained state machine reduction so well. Got 100% on that lab assignment!", date: "Nov 03, 2026" }
+      { name: "Hamza Tariq", avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=80", rating: 5, exchange: "Digital Circuits for C++ Pointers", text: "Aelaf explained state machine reduction so well. Got 100% on that lab assignment!", date: "Nov 03, 2026" }
     ]
   }
 };
+
+// Aliases for backwards compatibility with any previous query links
+STUDENT_DATABASE["alex chen"] = STUDENT_DATABASE["ahmad ali"];
+STUDENT_DATABASE["sarah jenkins"] = STUDENT_DATABASE["neha ahmed"];
+STUDENT_DATABASE["aarav patel"] = STUDENT_DATABASE["hamza tariq"];
+STUDENT_DATABASE["david kim"] = STUDENT_DATABASE["bilal hassan"];
+STUDENT_DATABASE["emma watson"] = STUDENT_DATABASE["moatter fatima"];
+STUDENT_DATABASE["carlos rodriguez"] = STUDENT_DATABASE["zain ul abidin"];
+STUDENT_DATABASE["lucas meyer"] = STUDENT_DATABASE["daniyal khan"];
+STUDENT_DATABASE["priya nair"] = STUDENT_DATABASE["aelaf ashraf"];
 
 /* ==========================================================================
    1. Active Navbar Link & User State
@@ -289,7 +300,7 @@ function initCurrentUserSession() {
     const savedUser = JSON.parse(localStorage.getItem('skillswap_user') || 'null');
     if (savedUser) {
       const navUserName = document.getElementById('navUserName');
-      if (navUserName) navUserName.textContent = savedUser.name || 'Alex Chen';
+      if (navUserName) navUserName.textContent = savedUser.name || 'Ahmad Ali';
     }
   } catch (err) {
     console.debug('Session check:', err);
@@ -481,9 +492,9 @@ function initStudentProfilePage() {
   // Read ?student= from URL
   const urlParams = new URLSearchParams(window.location.search);
   const requestedStudent = urlParams.get('student');
-  const lookupKey = requestedStudent ? requestedStudent.toLowerCase().trim() : 'alex chen';
+  const lookupKey = requestedStudent ? requestedStudent.toLowerCase().trim() : 'ahmad ali';
 
-  const data = STUDENT_DATABASE[lookupKey] || STUDENT_DATABASE['alex chen'];
+  const data = STUDENT_DATABASE[lookupKey] || STUDENT_DATABASE['ahmad ali'];
 
   // Update Page Title & Name
   document.title = `${data.name} – Student Profile | SkillSwap`;
@@ -646,7 +657,7 @@ function initLeaveReviewModal(targetStudentName) {
     const comment = document.getElementById('reviewCommentText')?.value || 'Great peer exchange!';
 
     const newReview = {
-      name: "Alex Chen (You)",
+      name: "Ahmad Ali (You)",
       avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=80",
       rating: score,
       exchange: topic,
@@ -986,7 +997,7 @@ function initAuthHelpers() {
     btnDemoLogin.addEventListener('click', () => {
       const email = document.getElementById('loginEmail');
       const pass = document.getElementById('loginPassword');
-      if (email) email.value = 'alex.chen@university.edu';
+      if (email) email.value = 'ahmad.ali@university.edu';
       if (pass) pass.value = 'Student@2026';
       showCustomToast('🔑 Credentials Auto-Filled', 'Click "Log In to SkillSwap" to test dashboard access.');
     });
@@ -1005,8 +1016,8 @@ function initAuthHelpers() {
       const pass = document.getElementById('regPassword');
       const confirmPass = document.getElementById('regConfirmPassword');
 
-      if (name) name.value = 'Alex Chen';
-      if (email) email.value = 'alex.chen@university.edu';
+      if (name) name.value = 'Ahmad Ali';
+      if (email) email.value = 'ahmad.ali@university.edu';
       if (college) college.value = 'State Institute of Engineering & Technology';
       if (major) major.value = 'Computer Science • 5th Sem';
       if (teach) teach.value = 'HTML5, CSS3 & Bootstrap 5';
@@ -1023,12 +1034,12 @@ function initAuthHelpers() {
   if (loginForm) {
     loginForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const email = document.getElementById('loginEmail')?.value || 'alex.chen@university.edu';
+      const email = document.getElementById('loginEmail')?.value || 'ahmad.ali@university.edu';
       const name = email.split('@')[0].replace('.', ' ').replace(/\b\w/g, l => l.toUpperCase());
 
       localStorage.setItem('skillswap_user', JSON.stringify({
         email,
-        name: name || 'Alex Chen',
+        name: name || 'Ahmad Ali',
         role: 'Verified Student'
       }));
 
@@ -1044,7 +1055,7 @@ function initAuthHelpers() {
   if (registerForm) {
     registerForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const name = document.getElementById('regFullName')?.value || 'Alex Chen';
+      const name = document.getElementById('regFullName')?.value || 'Ahmad Ali';
       const email = document.getElementById('regEmail')?.value || 'student@university.edu';
       const pass = document.getElementById('regPassword')?.value;
       const confirmPass = document.getElementById('regConfirmPassword')?.value;

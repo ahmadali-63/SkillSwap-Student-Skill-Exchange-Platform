@@ -32,7 +32,7 @@ Built as a **5th Semester Web Engineering / Academic Coursework Project**, the a
 - **Quick Swap Modal**: Allows students to send a proposal directly from any card with pre-filled partner details.
 
 ### 3. 👤 Dynamic Student Profiles (`profile.html`)
-- **Query Parameter-Driven Engine**: Dynamically populates student data (`profile.html?student=Aarav%20Patel`, `David%20Kim`, etc.) from an internal database.
+- **Query Parameter-Driven Engine**: Dynamically populates student data (`profile.html?student=Hamza%20Tariq`, `Bilal%20Hassan`, etc.) from an internal database.
 - **Skill Proficiency Bars**: Visual percentage progress bars highlighting each student's mastery in offered topics.
 - **Weekly Availability Schedule**: Detailed timetable of campus study hours, labs, and online slots.
 - **Interactive Review System**: Includes a **"Leave Review"** modal that allows users to rate peers (1–5 stars) and immediately renders the new feedback on the profile.
@@ -105,13 +105,13 @@ To review and grade the project in less than 3 minutes, follow these steps:
 2. **Test One-Click Login**:
    - Go to [`login.html`](file:///c:/Users/Nur%20Sultan/Desktop/5TH%20SEM%20WORK/SkillSwap%20%E2%80%93%20Student%20Skill%20Exchange%20Platform/login.html), click the yellow **"Auto Fill"** button, then click **"Log In to SkillSwap"**.
 3. **Test Dashboard Interactivity**:
-   - On [`dashboard.html`](file:///c:/Users/Nur%20Sultan/Desktop/5TH%20SEM%20WORK/SkillSwap%20%E2%80%93%20Student%20Skill%20Exchange%20Platform/dashboard.html), click **"Accept Swap"** on Emma Watson's request. Notice the status turns green, the incoming count decreases, and a confirmation toast appears.
+   - On [`dashboard.html`](dashboard.html), click **"Accept Swap"** on Neha Ahmed's request. Notice the status turns green, the incoming count decreases, and a confirmation toast appears.
    - Click **"List New Skill"**, enter a skill (e.g., `React Fundamentals`), and click **Add**. The new skill card appears dynamically.
 4. **Test Real-Time Directory & Search**:
-   - Go to [`explore.html`](file:///c:/Users/Nur%20Sultan/Desktop/5TH%20SEM%20WORK/SkillSwap%20%E2%80%93%20Student%20Skill%20Exchange%20Platform/explore.html), type `"Python"` or `"Calculus"` into the search box.
+   - Go to [`explore.html`](explore.html), type `"Python"` or `"Calculus"` into the search box.
    - Click the category buttons (*Academics*, *Design*, *Programming*) to observe instant client-side filtering.
 5. **Test Dynamic Profile Switching**:
-   - Click **"Profile"** on any card (e.g. *David Kim* or *Aarav Patel*).
+   - Click **"Profile"** on any card (e.g. *Bilal Hassan* or *Hamza Tariq*).
    - Notice that [`profile.html`](file:///c:/Users/Nur%20Sultan/Desktop/5TH%20SEM%20WORK/SkillSwap%20%E2%80%93%20Student%20Skill%20Exchange%20Platform/profile.html) automatically updates the avatar, bio, roll number, schedule, and reviews for that specific student.
    - Click **"Leave Review"**, select 5 stars, submit, and watch the review prepend live to the list.
 6. **Test Sending a Proposal**:
